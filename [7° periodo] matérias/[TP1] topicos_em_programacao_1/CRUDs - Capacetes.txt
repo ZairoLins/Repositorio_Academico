@@ -1,0 +1,90 @@
+Tópicos em Programação I - CRUDs
+E-commerce: Capacetes
+
+Mapa de CRUDs
+
+Catálogo
+
+- CRUD de Capacetes  
+- CRUD de Categorias
+- CRUD de Marcas
+- CRUD de Normas de Certificação
+- CRUD de Imagens de Produto
+
+
+Clientes e Acesso
+
+- CRUD de Usuários
+- CRUD de Clientes
+- CRUD de Endereços de Cliente
+- CRUD de Telefones de Cliente
+
+Carrinho e Pedidos
+
+- CRUD de Carrinhos
+- CRUD de Itens de Carrinh
+- CRUD de Pedidos
+- CRUD de Itens de Pedido
+- CRUD de Faturas
+
+Pagamentos
+
+- CRUD de Pagamentos
+- CRUD de Transações de Pagamento
+
+Logística
+
+- CRUD de Entregas
+- CRUD de Transportadoras
+- CRUD de Depósitos
+- CRUD de Estoques
+
+Engajamento
+
+- CRUD de Avaliações de Produto
+- CRUD de Listas de Desejos
+
+
+Herança, Composição, Agregação e Associações
+
+Herança (polimorfismo e reuso)
+
+- Produto (abstrato) → Capacete, Acessório
+- Capacete traz campos técnicos (material da calota, fecho, certificações)
+- Pessoa (abstrato) → Cliente, Administrador
+- Pagamento (abstrato) → PagamentoCartao, PagamentoPix, PagamentoBoleto
+
+Composição (parte não existe sem o todo)
+
+- Carrinho compõe Itens de Carrinho (1–N)
+- Pedido compõe Itens de Pedido (1–N)
+- Cliente compõe Endereços (1–N)
+- Produto compõe Imagens (1–N)
+- Entrega compõe Eventos de Entrega (0–N)
+- Estoque compõe Movimentações (0–N)
+
+Agregação (todo–parte fraca; ciclos de vida próprios)
+
+- Marca agrega Produtos (Produto referencia Marca, mas ambos existem sozinhos)
+- Categoria agrega Produtos (via N–N)
+- Promoção agrega Regras de Promoção
+
+Associações por cardinalidade
+
+1 : 1
+
+- Cliente — Carrinho (carrinho ativo por cliente)
+- Pedido — Entrega (sem split; com split vira 1–N)
+
+1 : N / N : 1
+
+- Cliente — Pedidos (um cliente pode ter vários pedidos)
+- Produto — Imagens (se composição)
+- Entrega — Transportadora (muitas entregas por transportadora)
+- Estoque — Produto** e Depósito — Estoques
+
+N : N
+
+- Produto — Categoria (produto em várias categorias)
+- Capacete — Norma de Certificação (um capacete pode ter múltiplas normas)
+- Lista de Desejos — Produto (via itens da lista)
